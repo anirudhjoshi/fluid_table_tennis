@@ -297,7 +297,7 @@ function prepareFrame(field) {
 
 			if ( !pong.ai.multiplayer ){
 
-				aval = 15;
+				aval = 0;
 
 			}			
 
@@ -324,7 +324,11 @@ function prepareFrame(field) {
 
 				if ( suck_counter_2 <= val ){
 
+					if ( !pong.ai.multiplayer){
+					field.setVelocity( Math.floor( pong.ai.x + pong.ai.width / 2 ), Math.floor( pong.ai.y + pong.ai.height / 2 ), -2500, 0 );	
+				} else {
 					field.setVelocity( Math.floor( pong.ai.x + pong.ai.width / 2 ), Math.floor( pong.ai.y + pong.ai.height / 2 ), -5000, 0 );	
+				}
 					field.setDensityRGB( Math.floor( pong.ai.x + pong.ai.width / 2  ) , Math.floor( pong.ai.y + pong.ai.height / 2 ), pong.ai.color );				
 
 					suck_on2 = false;

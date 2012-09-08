@@ -218,14 +218,14 @@ function Pong(canvas) {
 					// If this.ball's position smaller than paddle's, move up 
 					if (this.ball.y < real_y_pos) {
 					
-						this.ai.y -= this.speed; 
+						this.ai.y -= this.speed/1.2; 
 						
 					} 
 					
 					// If this.ball's position greater than padle's, move down 
 					else if ( this.ball.y > real_y_pos ) {
 					
-						this.ai.y  += this.speed; 
+						this.ai.y  += this.speed/1.2; 
 					 
 					}
 				
