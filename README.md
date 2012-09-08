@@ -13,7 +13,7 @@ This is a demonstration of the possibilites that HTML5/browsers have to offer in
 
 #### Introduction ####
 
-It renders a ping pong game interacting with a full-color real-time fluid simulation at 60 FPS.
+It renders a table tennis game interacting with a full-color real-time fluid simulation at 60 FPS.
 
 It utilizes the algorithim created by Jos Stam ([Real-Time Fluid Dynamics for Games](http://www.autodeskresearch.com/pdf/GDC03.pdf)), monochrome dynamics implemented by Oliver Hunt ([Oliver's simple fluid dynamics simulator](http://nerget.com/fluidSim/)), amended with RJ Marsan's RGB example ([Plasma Pong Android by RJ Marsan](https://github.com/rjmarsan/PlasmaPongAndroid)) and a little special sauce by yours truly.
 
