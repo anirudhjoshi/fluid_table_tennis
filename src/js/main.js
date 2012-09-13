@@ -584,43 +584,34 @@ function updateRes() {
 
 }
 
-var keyDown = function(e) {
+function key_check( e, keyMap, set) {
 
 	var i;		
 
-	for(i in pong.keyMap) {
+	for(i in keyMap) {
 
-		if (pong.keyMap.hasOwnProperty(i)) {
+		if (keyMap.hasOwnProperty(i)) {
 		
-			if( e.keyCode === pong.keyMap[i].code ) {
+			if( e.keyCode === keyMap[i].code ) {
 			
-					pong.keyMap[i].on = true;
+					keyMap[i].on = set;
 					break;
 					
 				}
 				
 			}   
-		}			
+		}		
+}
+
+var keyDown = function(e) {
+
+	key_check( e, pong.keyMap, true);
 
 }
 
 var keyUp = function(e) {
 
-	var i;
-	
-	for(i in pong.keyMap) {
-
-		if (pong.keyMap.hasOwnProperty(i)) {
-		
-			if( e.keyCode === pong.keyMap[i].code ) {
-			
-					pong.keyMap[i].on = false;
-					break;
-					
-				}
-				
-			}   
-		}			
+	key_check( e, pong.keyMap, false);
 
 }
 
