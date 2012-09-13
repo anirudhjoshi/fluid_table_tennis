@@ -329,29 +329,26 @@ function prepareFrame(field) {
 
 }
 
+function drawPowerBar( color, x, y, width, height ){
+
+	ctx.fillStyle = color;
+	ctx.fillRect(x, y, width, height);
+
+}
+
 function drawSuck() {
 
-	ctx.fillStyle = "black";
-	ctx.fillRect(0,1, canvas.width, 4);		
-
-	ctx.fillStyle = arrayToRGBA( pong.ai.color );
-	ctx.fillRect(1,2, ( canvas.width/ 2 - 2 ) * suck_counter_1 / 100, 2);
-
-	ctx.fillStyle = arrayToRGBA( pong.player.color );	
-	ctx.fillRect(canvas.width / 2 + ( canvas.width/ 2 ) * ( 1 - suck_counter_2 / 100 ),2, ( canvas.width/ 2 - 1 ) * suck_counter_2 / 100, 2);
+	drawPowerBar( "black", 0, 1, canvas.width, 4 );
+	drawPowerBar( arrayToRGBA( pong.ai.color ), 1,2, ( canvas.width/ 2 - 2 ) * suck_counter_1 / 100, 2 );
+	drawPowerBar( arrayToRGBA( pong.player.color ), canvas.width / 2 + ( canvas.width/ 2 ) * ( 1 - suck_counter_2 / 100 ),2, ( canvas.width/ 2 - 1 ) * suck_counter_2 / 100, 2 );
 
 }
 
 function drawLives(){
 
-	ctx.fillStyle = "black";
-	ctx.fillRect(0,canvas.height - 5, canvas.width, 4);		
-
-	ctx.fillStyle = arrayToRGBA( pong.ai.color );			
-	ctx.fillRect(canvas.width / 2 + ( canvas.width/ 2 ) * ( 1 - pong.ai.life / 5 ),canvas.height - 4, ( canvas.width/ 2 - 1 ) * pong.ai.life / 5, 2);
-
-	ctx.fillStyle = arrayToRGBA( pong.player.color );
-	ctx.fillRect(1,canvas.height - 4, ( canvas.width/ 2 - 2 ) * pong.player.life / 5, 2);	
+	drawPowerBar( "black", 0,canvas.height - 5, canvas.width, 4);
+	drawPowerBar( arrayToRGBA( pong.ai.color ), canvas.width / 2 + ( canvas.width/ 2 ) * ( 1 - pong.ai.life / 5 ),canvas.height - 4, ( canvas.width/ 2 - 1 ) * pong.ai.life / 5, 2);
+	drawPowerBar( arrayToRGBA( pong.player.color ), 1,canvas.height - 4, ( canvas.width/ 2 - 2 ) * pong.player.life / 5, 2);
 
 }
 
