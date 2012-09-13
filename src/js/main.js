@@ -10,12 +10,9 @@ var running = false;
 var canvas = document.getElementById("canvas");
 var ctx = canvas.getContext("2d");
 
+var white = [0.9642, 1, 0.8249 ];
+
 var L = 75;
-
-function Main() {
-
-
-}
 
 function Colors(){
 
@@ -184,9 +181,9 @@ function prepareFrame(field) {
 
 	colors.rotate();
 
-	pong.player.color = cielabToRGB( L, player_ab[0], player_ab[1], [0.9642, 1, 0.8249 ] )
-	pong.ai.color = cielabToRGB( L, ai_ab[0], ai_ab[1], [0.9642, 1, 0.8249 ] )
-	pong.ball.color = cielabToRGB( L, ball_ab[0], ball_ab[1], [0.9642, 1, 0.8249 ] )	
+	pong.player.color = cielabToRGB( L, player_ab, white );
+	pong.ai.color = cielabToRGB( L, ai_ab, white );
+	pong.ball.color = cielabToRGB( L, ball_ab, white );
 
 	field.setDensityRGB( Math.floor( pong.ball.x + pong.ball.radius / 2  ) , Math.floor( pong.ball.y + pong.ball.radius / 2 ), pong.ball.color );				
 	
@@ -430,13 +427,11 @@ function switchAnimation() {
 	
 }
 
-var white = [0.9642, 1, 0.8249 ];
+function cielabToRGB( L, ab, white ) {
 
-function cielabToRGB( L, a, b, white ) {
-
-	x = white[0] * inverseCielab( ( 1 / 116 ) * ( L + 16 ) + ( 1 / 500 ) * a  ) * 255;
+	x = white[0] * inverseCielab( ( 1 / 116 ) * ( L + 16 ) + ( 1 / 500 ) * ab[0] ) * 255;
 	y = white[1] * inverseCielab( ( 1 / 116 ) * ( L + 16 ) ) * 255;
-	z = white[2] * inverseCielab( ( 1 / 116 ) * ( L + 16 ) + ( 1 / 200 ) * b  ) * 255;
+	z = white[2] * inverseCielab( ( 1 / 116 ) * ( L + 16 ) + ( 1 / 200 ) * ab[1] ) * 255;
 
 	return [ x, y, z];
 }
