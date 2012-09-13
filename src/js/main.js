@@ -123,13 +123,7 @@ var player_switch = "HUMAN";
 
 var not = document.getElementById('notifications');
 
-function prepareFrame(field) {
-
-	if ( fps == 60){
-
-		fps = 0;
-
-	}
+function notify(){
 
 	if ( pong.ai.multiplayer ){
 
@@ -169,6 +163,16 @@ function prepareFrame(field) {
 		not.innerHTML = player_switch + " WINS!"
 
 		restart();
+
+	}
+
+}
+
+function prepareFrame(field) {
+
+	if ( fps == 60){
+
+		fps = 0;
 
 	}
 
@@ -611,6 +615,7 @@ function updateFrame() {
 
 		field.update();    
 		pong.loop();
+		notify();
 
 		ctx.fillStyle = "black";
 		ctx.fillRect(0,1, canvas.width, 4);		
