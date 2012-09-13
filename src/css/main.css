@@ -24,7 +24,6 @@ a:active {color:#e55e5f;}  /* selected link */
 	float: center;
     margin: 0 auto;
     width: 85em;
-	
 
 }
 
@@ -56,8 +55,8 @@ a:active {color:#e55e5f;}  /* selected link */
 
 	float: left;
     position: relative;
-    padding-left: 4em;
-	width: 25em;
+    padding-left: 3em;
+	width: 26em;
 
 }
 
@@ -84,7 +83,8 @@ canvas {
 
 #row {
 
-    text-align: center;      
+    text-align: center;
+    margin-left: -4em;     
     color: #151924;
  
 }
