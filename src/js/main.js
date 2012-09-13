@@ -415,14 +415,14 @@ function drawSuck() {
 
 function drawLives(){
 
-		ctx.fillStyle = "black";
-		ctx.fillRect(0,canvas.height - 5, canvas.width, 4);		
+	ctx.fillStyle = "black";
+	ctx.fillRect(0,canvas.height - 5, canvas.width, 4);		
 
-		ctx.fillStyle = arrayToRGBA( pong.ai.color );			
-		ctx.fillRect(canvas.width / 2 + ( canvas.width/ 2 ) * ( 1 - pong.ai.life / 5 ),canvas.height - 4, ( canvas.width/ 2 - 1 ) * pong.ai.life / 5, 2);
+	ctx.fillStyle = arrayToRGBA( pong.ai.color );			
+	ctx.fillRect(canvas.width / 2 + ( canvas.width/ 2 ) * ( 1 - pong.ai.life / 5 ),canvas.height - 4, ( canvas.width/ 2 - 1 ) * pong.ai.life / 5, 2);
 
-		ctx.fillStyle = arrayToRGBA( pong.player.color );
-		ctx.fillRect(1,canvas.height - 4, ( canvas.width/ 2 - 2 ) * pong.player.life / 5, 2);	
+	ctx.fillStyle = arrayToRGBA( pong.player.color );
+	ctx.fillRect(1,canvas.height - 4, ( canvas.width/ 2 - 2 ) * pong.player.life / 5, 2);	
 
 }
 
@@ -442,8 +442,6 @@ function switchAnimation() {
 
 	}
 
-
-
 	return;
 	
 }
@@ -455,6 +453,7 @@ function startAnimation() {
 	return;
 	
 } 
+
 // shim layer with setTimeout fallback
 window.requestAnimFrame = (function(){
   return  window.requestAnimationFrame       || 
@@ -466,10 +465,6 @@ window.requestAnimFrame = (function(){
             window.setTimeout(callback, 1000 / FPS);
           };
 })();
-
-
-// usage: 
-// instead of setInterval(render, 16) ....
 
 (function animloop(){
 
@@ -576,10 +571,9 @@ function updateFrame() {
 	
 }
 
-var r = 96;
-var field;
+function updateRes() {
 
-function updateRes( r ) {
+		var r = 96;
 
 		canvas.width = r;
 		canvas.height = r;
@@ -593,7 +587,7 @@ function updateRes( r ) {
 var keyDown = function(e) {
 
 	var i;		
-	
+
 	for(i in pong.keyMap) {
 
 		if (pong.keyMap.hasOwnProperty(i)) {
@@ -644,7 +638,7 @@ function begin() {
 	window.addEventListener("keydown", keyDown, false);
 	window.addEventListener("keyup", keyUp, false);
 	
-	updateRes(r);     
+	updateRes();     
 	startAnimation();
 
 }
