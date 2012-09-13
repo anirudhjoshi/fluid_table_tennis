@@ -3,16 +3,60 @@
 // as quickly as I could
 
 var res;
-var displaySize = 512;
 var fieldRes;
 var clear_id;
+var FPS = 60;
 var running = false;
 var canvas = document.getElementById("canvas");
 var ctx = canvas.getContext("2d");
 
 var L = 75;
 
-var distanceRotators = [ 0, 201, 401 ];
+function Main() {
+
+
+}
+
+function Colors(){
+
+	this.distanceRotators = [ 0, 201, 401 ];
+
+	this.rotate = function(){
+
+		for ( var i = 0; i < 3; i++ ){
+
+			this.distanceRotators[i]++;
+
+			if ( this.distanceRotators[i] > 600 ) {
+
+				this.distanceRotators[i] = 0;
+
+			}
+
+		}		
+
+	}
+
+}
+
+function rotator( a ) {
+
+	if ( a >= 0 && a <= 200 ){
+
+		return [ 200 - (100 + a), 100 ];
+
+	} else if ( a > 200 && a <= 400 ) {
+
+		return [ -100 + (a - 200), 100 - (a - 200) ];
+
+	} else if ( a > 400 && a <= 600 ) {
+
+		return [ 100, -100 + (a - 400) ]
+
+	}
+
+
+}
 
 function multiplayer() {	
 
@@ -55,27 +99,9 @@ function restart() {
 
 }
 
-function rotator( a ) {
-
-	if ( a >= 0 && a <= 200 ){
-
-		return [ 200 - (100 + a), 100 ];
-
-	} else if ( a > 200 && a <= 400 ) {
-
-		return [ -100 + (a - 200), 100 - (a - 200) ];
-
-	} else if ( a > 400 && a <= 600 ) {
-
-		return [ 100, -100 + (a - 400) ]
-
-	}
-
-
-}
-
 var field;
 var pong;
+var colors;
 
 var counter = 0;
 var suck_counter_1 = 100;
@@ -148,26 +174,15 @@ function prepareFrame(field) {
 
 	fps++;
 
-	var player_ab = rotator( distanceRotators[0] );
-	var ai_ab = rotator( distanceRotators[1] );
-	var ball_ab = rotator( distanceRotators[2] );
+	var player_ab = rotator( colors.distanceRotators[0] );
+	var ai_ab = rotator( colors.distanceRotators[1] );
+	var ball_ab = rotator( colors.distanceRotators[2] );
+
+	colors.rotate();
 
 	pong.player.color = cielabToRGB( L, player_ab[0], player_ab[1], [0.9642, 1, 0.8249 ] )
 	pong.ai.color = cielabToRGB( L, ai_ab[0], ai_ab[1], [0.9642, 1, 0.8249 ] )
 	pong.ball.color = cielabToRGB( L, ball_ab[0], ball_ab[1], [0.9642, 1, 0.8249 ] )	
-
-	for ( var i = 0; i < 3; i++ ){
-
-		distanceRotators[i]++;
-
-		if ( distanceRotators[i] > 600 ) {
-
-			distanceRotators[i] = 0;
-		}
-
-
-
-	}
 
 	field.setDensityRGB( Math.floor( pong.ball.x + pong.ball.radius / 2  ) , Math.floor( pong.ball.y + pong.ball.radius / 2 ), pong.ball.color );				
 	
@@ -439,7 +454,7 @@ window.requestAnimFrame = (function(){
           window.oRequestAnimationFrame      || 
           window.msRequestAnimationFrame     || 
           function( callback ){
-            window.setTimeout(callback, 1000 / 60);
+            window.setTimeout(callback, 1000 / FPS);
           };
 })();
 
@@ -675,16 +690,20 @@ var keyUp = function(e) {
 function begin() {
 
 	field = new Fluid(canvas);
+
 	field.setUICallback(prepareFrame);
 	field.setDisplayFunction(field.toggleDisplayFunction(canvas, 0));
 
 	pong = new Pong(canvas);
+
+	colors = new Colors();
 
 	window.addEventListener("keydown", keyDown, false);
 	window.addEventListener("keyup", keyUp, false);
 	
 	updateRes(r);     
 	startAnimation();
+
 }
 
 begin();
