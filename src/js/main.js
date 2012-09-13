@@ -4,7 +4,6 @@
 
 var res;
 var fieldRes;
-var clear_id;
 var FPS = 60;
 var running = false;
 var canvas = document.getElementById("canvas");
