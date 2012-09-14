@@ -55,7 +55,7 @@ var pong;
 var colors;
 var counter;
 
-var counter = 0;
+var ball_counter = 0;
 var suck_counter_1 = 100;
 var suck_counter_2 = 100;
 
@@ -160,12 +160,12 @@ function prepareFrame(field) {
 	field.setDensityRGB( x, Math.floor( pong.ball.yo + pong.ball.radius / 2 ), pong.ball.color );				
 	field.setVelocity( x, Math.floor( pong.ball.yo + pong.ball.radius / 2 ), mult*500, 0 );		
 
-		counter++;
+		ball_counter++;
 
-		if ( counter == 12 ) {
+		if ( ball_counter == 12 ) {
 	
 			pong.ball.out = false;
-			counter = 0;
+			ball_counter = 0;
 
 		}
 	}
