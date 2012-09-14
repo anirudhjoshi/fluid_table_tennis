@@ -547,14 +547,11 @@ var keyUp = function(e) {
 function begin() {
 
 	field = new Fluid(canvas);
-
 	field.setUICallback(prepareFrame);
 	field.setDisplayFunction(field.toggleDisplayFunction(canvas, 0));
 
 	pong = new Pong(canvas);
-
 	colors = new Colors();
-
 	counter = new Counter();
 
 	window.addEventListener("keydown", keyDown, false);
