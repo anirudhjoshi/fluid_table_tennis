@@ -70,6 +70,8 @@ function Pong(canvas) {
 
 	this.updatePlayer = function () {
 
+		this.player.vy += this.player.ay;					
+
 		if (this.keyMap.up.on) {
 			this.player.ay = -this.speed_increase;
 			if (this.player.vy < -this.speed) {
@@ -110,7 +112,7 @@ function Pong(canvas) {
 			
 		}
 
-		this.player.vy += this.player.ay;			
+		
 		this.player.y += this.player.vy;    
 
 	};
