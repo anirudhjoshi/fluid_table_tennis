@@ -2,7 +2,6 @@
 // Still needs a good clean up and encapsulation - just aimed to get it working
 // as quickly as I could
 
-var res;
 var FPS = 60;
 var running = false;
 var canvas = document.getElementById("canvas");
