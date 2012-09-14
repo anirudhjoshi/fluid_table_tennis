@@ -558,10 +558,14 @@ function Fluid(canvas) {
 
     this.reset = reset;
 
+    this.fieldRes = 96;
+
     // Resolution bounder and resetter
     this.setResolution = function ( hRes, wRes ) {
 
         var res = wRes * hRes;
+
+        this.fieldRes = hRes;
 
         if (res > 0 && res < 1000000 && (wRes != width || hRes != height)) {
 
@@ -776,8 +780,8 @@ function Fluid(canvas) {
         
         showVectors = true;
         
-        canvas.width = fieldRes;
-        canvas.height = fieldRes;
+        canvas.width = this.fieldRes;
+        canvas.height = this.fieldRes;
         
         return displayDensity;
         

@@ -3,7 +3,6 @@
 // as quickly as I could
 
 var res;
-var fieldRes;
 var FPS = 60;
 var running = false;
 var canvas = document.getElementById("canvas");
@@ -508,7 +507,7 @@ function updateRes() {
 
 		canvas.width = r;
 		canvas.height = r;
-		fieldRes = r;
+
 		field.setResolution(r, r);
 		pong.display = false;
         pong.init(); 
