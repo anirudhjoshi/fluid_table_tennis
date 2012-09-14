@@ -37,7 +37,7 @@ function restart() {
 	prev_player_life = 5;
 	prev_ai_life = 5;
 
-	coul_incr = 0;
+	counter.coul_incr = 0;
 
  	field.reset();
 
@@ -46,13 +46,14 @@ function restart() {
 
  	pong.clear();
 
-	run_coul = true;
+	counter.run_coul = true;
 
 }
 
 var field;
 var pong;
 var colors;
+var counter;
 
 var counter = 0;
 var suck_counter_1 = 100;
@@ -400,72 +401,76 @@ window.requestAnimFrame = (function(){
 
 })();
 
-var coul = 0;
-var coul_incr = 0;
+function Counter(){
 
-var symbols = [3,2,1, "GO!"];
+	this.coul = 0;
+	this.coul_incr = 0;
 
-var coul_switch = true;
-var run_coul = true;
-var cout_color = [];
+	this.symbols = [3,2,1, "GO!"];
 
-function count_down(){
+	this.coul_switch = true;
+	this.run_coul = true;
+	this.cout_color = [];
 
-		coul++;
+	this.count_down = function(){
 
-		if (cout_color.length == 0){
-			cout_color = pong.ai.color;
-		}
+			this.coul++;
 
-		if ( coul == 60 * 1 ){
-
-			if (coul_incr % 2 == 0){
-
-				cout_color = pong.player.color;
-				
-			} else {
-				cout_color = pong.ai.color;
+			if (this.cout_color.length == 0){
+				this.cout_color = pong.ai.color;
 			}
 
-			coul = 0;
-			coul_incr++;
+			if ( this.coul == 60 * 1 ){
 
-		}
+				if (this.coul_incr % 2 == 0){
 
-	  	if ( coul_incr == 4 ){
+					this.cout_color = pong.player.color;
+					
+				} else {
+					this.cout_color = pong.ai.color;
+				}
 
-  			coul_incr = 0;
-  			run_coul = false;
+				this.coul = 0;
+				this.coul_incr++;
 
-  			field.reset();
+			}
 
-  			pong.display = true;
-  			pong.player.suck = false;
-  			pong.init();  			
+		  	if ( this.coul_incr == 4 ){
 
-  			pong.clear();
-			
-  			return;
+	  			this.coul_incr = 0;
+	  			this.run_coul = false;
 
-		}
+	  			field.reset();
 
-		var half_width = canvas.width / 2 - 8;
-		var half_height = canvas.width / 2 + 16;
+	  			pong.display = true;
+	  			pong.player.suck = false;
+	  			pong.init();  			
 
-		if ( coul_incr == 3 ){
+	  			pong.clear();
+				
+	  			return;
 
-			half_width -= 20;
+			}
 
-		}
+			var half_width = canvas.width / 2 - 8;
+			var half_height = canvas.width / 2 + 16;
+
+			if ( this.coul_incr == 3 ){
+
+				half_width -= 20;
+
+			}
 
 
-	  	ctx.font = "bold 34px Arial";
-	  	ctx.fillStyle = "black";
-	  	ctx.fillText(symbols[coul_incr], half_width - 1, half_height + 2);			
+		  	ctx.font = "bold 34px Arial";
+		  	ctx.fillStyle = "black";
+		  	ctx.fillText(this.symbols[this.coul_incr], half_width - 1, half_height + 2);			
 
-	  	ctx.fillStyle = arrayToRGBA( cout_color );
-	  	ctx.font = "bold 32px Arial";
-	  	ctx.fillText(symbols[coul_incr], half_width, half_height);	
+		  	ctx.fillStyle = arrayToRGBA( this.cout_color );
+		  	ctx.font = "bold 32px Arial";
+		  	ctx.fillText(this.symbols[this.coul_incr], half_width, half_height);	
+
+	}	
 
 }
 
@@ -487,9 +492,9 @@ function updateFrame() {
 		drawSuck();
 		drawLives();
 
-		if ( run_coul ){
+		if ( counter.run_coul ){
 
-			count_down();
+			counter.count_down();
 
 		}
 
@@ -551,6 +556,8 @@ function begin() {
 	pong = new Pong(canvas);
 
 	colors = new Colors();
+
+	counter = new Counter();
 
 	window.addEventListener("keydown", keyDown, false);
 	window.addEventListener("keyup", keyUp, false);
