@@ -67,7 +67,7 @@ canvas {
 	
 }
 
-#key {
+.key {
 
     padding: 0.5em;
     margin: 0.1em;
@@ -81,7 +81,7 @@ canvas {
 
 }
 
-#row {
+.row {
 
     text-align: center;
     margin-left: -4em;     
@@ -89,13 +89,13 @@ canvas {
  
 }
 
-#b_wrapper {
+.b_wrapper {
 
 	margin: 0 auto;
 
 }
 
-#in {
+.in {
     
     padding: 0.4em;
     margin: 0.5em;
