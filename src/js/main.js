@@ -164,7 +164,7 @@ function prepareFrame(field) {
 	
 			pong.ball.out = false;
 			ball_counter = 0;
-
+			
 		}
 	}
 	
