@@ -19,7 +19,7 @@ a:active {color:#e55e5f;}  /* selected link */
 
 }
 
-#container {
+.container {
 
 	float: center;
     margin: 0 auto;
@@ -27,7 +27,7 @@ a:active {color:#e55e5f;}  /* selected link */
 
 }
 
-#left {
+.left {
 
 	float: left;
     position: relative;
@@ -36,14 +36,14 @@ a:active {color:#e55e5f;}  /* selected link */
 
 }
 
-#left p {
+.left p {
 
     width: 20em;
 
 }
 
 
-#middle {
+.middle {
 
 	float: left;
     position: relative;
@@ -51,7 +51,7 @@ a:active {color:#e55e5f;}  /* selected link */
 
 }
 
-#right {
+.right {
 
 	float: left;
     position: relative;
