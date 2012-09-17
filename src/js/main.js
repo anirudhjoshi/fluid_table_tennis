@@ -248,6 +248,12 @@ function prepareFrame(field) {
 
 	}
 
+	if ( suck_counter_2 < 100 && fps % 10 == 1 )	{
+
+		suck_counter_2 += 2;
+
+	}	
+
 	if ( !pong.ai.multiplayer ){
 
 		if ( suck_counter_2 >= 90 ){
@@ -327,12 +333,6 @@ function prepareFrame(field) {
 		ball_caught2 = false;
 
 	}
-
-	if ( suck_counter_2 < 100 && fps % 10 == 1 )	{
-
-		suck_counter_2 += 2;
-
-	}	
 
 }
 
