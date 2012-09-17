@@ -129,27 +129,7 @@ function push( player, field, velocity ){
 
 }
 
-function prepareFrame(field) {
-
-	if ( fps == 60){
-
-		fps = 0;
-
-	}
-
-	fps++;
-
-	colors.rotate();
-
-	pong.player.color = colors.colors[0];
-	pong.ai.color = colors.colors[1];
-	pong.ball.color = colors.colors[2];
-
-	field.setDensityRGB( Math.floor( pong.ball.x + pong.ball.radius / 2  ) , Math.floor( pong.ball.y + pong.ball.radius / 2 ), pong.ball.color );
-
-	push(pong.player, field, 50);
-
-	push(pong.ai, field, -50);
+function explode(field){
 
 	if ( pong.ball.out ){
 
@@ -175,6 +155,32 @@ function prepareFrame(field) {
 			
 		}
 	}
+
+}
+
+function prepareFrame(field) {
+
+	if ( fps == 60){
+
+		fps = 0;
+
+	}
+
+	fps++;
+
+	colors.rotate();
+
+	pong.player.color = colors.colors[0];
+	pong.ai.color = colors.colors[1];
+	pong.ball.color = colors.colors[2];
+
+	field.setDensityRGB( Math.floor( pong.ball.x + pong.ball.radius / 2  ) , Math.floor( pong.ball.y + pong.ball.radius / 2 ), pong.ball.color );
+
+	push(pong.player, field, 50);
+	push(pong.ai, field, -50);
+
+	explode(field);
+
 	
 	if ( pong.player.suck ) {			
 
