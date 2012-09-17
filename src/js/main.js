@@ -160,6 +160,15 @@ function explode(field){
 
 }
 
+function jiggleBall(player, distance){
+
+	pong.ball.x = player.x + distance + Math.random();
+	pong.ball.y = player.y + player.height / 2 + Math.random();
+	pong.ball.vx = 0;
+	pong.ball.vy = 0;	
+
+}
+
 function prepareFrame(field) {
 
 	if ( fps == 60){
@@ -202,10 +211,7 @@ function prepareFrame(field) {
 
 				ball_caught = true;
 
-				pong.ball.x = pong.player.x + 10 + Math.random();
-				pong.ball.y = pong.player.y + pong.player.height / 2 + Math.random();
-				pong.ball.vx = 0;
-				pong.ball.vy = 0;
+				jiggleBall( pong.player, 10);
 
 				suck_counter_1--;				
 
@@ -279,10 +285,7 @@ function prepareFrame(field) {
 
 				ball_caught2 = true;
 
-				pong.ball.x = pong.ai.x - 10 + Math.random();
-				pong.ball.y = pong.ai.y + pong.ai.height / 2 + Math.random();
-				pong.ball.vx = 0;
-				pong.ball.vy = 0;
+				jiggleBall( pong.ai, -10);
 
 				suck_counter_2--;		
 
