@@ -655,7 +655,7 @@ function Fluid(canvas) {
             if ( pong.ball.x < width && pong.ball.x > 0 && pong.ball.y > 0 && pong.ball.y < height ){
         
                 pong.ball.vy += field.getYVelocity(Math.round( pong.ball.x ), Math.round( pong.ball.y ) ) / 4;
-                pong.ball.vx += field.getXVelocity(Math.round( pong.ball.x ), Math.round( pong.ball.y ) ) / 6;          
+                pong.ball.vx += field.getXVelocity(Math.round( pong.ball.x ), Math.round( pong.ball.y ) ) / 6;
                 
             }
             
