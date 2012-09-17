@@ -118,6 +118,17 @@ function notify(){
 
 }
 
+function push( player, field, velocity ){
+
+	if (player.push) {
+
+		field.setVelocity( Math.floor( player.x + player.width / 2 ), Math.floor( player.y + player.height / 2 ), velocity, 0 );	
+		field.setDensityRGB( Math.floor( player.x + player.width / 2  ) , Math.floor( player.y + player.height / 2 ), player.color);
+
+	}
+
+}
+
 function prepareFrame(field) {
 
 	if ( fps == 60){
@@ -134,14 +145,11 @@ function prepareFrame(field) {
 	pong.ai.color = colors.colors[1];
 	pong.ball.color = colors.colors[2];
 
-	field.setDensityRGB( Math.floor( pong.ball.x + pong.ball.radius / 2  ) , Math.floor( pong.ball.y + pong.ball.radius / 2 ), pong.ball.color );				
-	
-	if ( pong.player.push ) {
+	field.setDensityRGB( Math.floor( pong.ball.x + pong.ball.radius / 2  ) , Math.floor( pong.ball.y + pong.ball.radius / 2 ), pong.ball.color );
 
-		field.setVelocity( Math.floor( pong.player.x + pong.player.width / 2 ), Math.floor( pong.player.y + pong.player.height / 2 ), 50, 0 );	
-		field.setDensityRGB( Math.floor( pong.player.x + pong.player.width / 2  ) , Math.floor( pong.player.y + pong.player.height / 2 ), pong.player.color);				
-		
-	}
+	push(pong.player, field, 50);
+
+	push(pong.ai, field, -50);
 
 	if ( pong.ball.out ){
 
@@ -225,13 +233,6 @@ function prepareFrame(field) {
 		suck_counter_1 += 2;
 
 	}
-
-	if ( pong.ai.push ) {
-
-		field.setVelocity( Math.floor( pong.ai.x + pong.ai.width / 2 ), Math.floor( pong.ai.y + pong.ai.height / 2 ), -50, 0 );	
-		field.setDensityRGB( Math.floor( pong.ai.x + pong.ai.width / 2  ) , Math.floor( pong.ai.y + pong.ai.height / 2 ), pong.ai.color );				
-		
-	}	
 
 	if ( !pong.ai.multiplayer ){
 
