@@ -2,12 +2,19 @@
 // Still needs a good clean up and encapsulation - just aimed to get it working
 // as quickly as I could
 
+// Global settings
 var FPS = 60;
 var running = false;
 var canvas = document.getElementById("canvas");
 var ctx = canvas.getContext("2d");
 
-function multiplayer() {	
+// Globals
+var field;
+var pong;
+var colors;
+var counter;
+
+function toggleMultiplayer() {	
 
 	if ( pong.ai.multiplayer ){
 
@@ -47,11 +54,6 @@ function restart() {
 	counter.run_coul = true;
 
 }
-
-var field;
-var pong;
-var colors;
-var counter;
 
 var ball_counter = 0;
 var suck_counter_1 = 100;
@@ -273,8 +275,6 @@ function prepareFrame(field) {
 
 			}			
 
-
-
 			if ( Math.abs( straight_line_dist ) < aval  ) {
 
 				ball_caught2 = true;
@@ -330,8 +330,6 @@ function prepareFrame(field) {
 		suck_counter_2 += 2;
 
 	}	
-
-	
 
 }
 
