@@ -281,3 +281,12 @@ div .fb_reset {
     width: 105px !important;
     
 }
+
+#disqus_thread {
+
+    padding-top: 1em;
+    padding-left: 2em;
+    padding-right: 2em;
+    height: 5em;
+
+}
