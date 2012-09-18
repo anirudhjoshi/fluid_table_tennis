@@ -645,8 +645,7 @@ function Fluid(canvas) {
         var context = canvas.getContext("2d");
         var width = field.width();
         var height = field.height();
-
-        // console.log( field.getXVelocity(Math.round( pong.ball.x ), Math.round( pong.ball.y ) ) / 7 )
+        
         // Continously buffer data to reduce computation overhead
         prepareBuffer(field);        
 
