@@ -3,7 +3,7 @@ fluid_table_tennis
 
 #### Table Tennis with fluid dynamics ####
 
-[Click here to play now!](http://anirudhjoshi.github.com/fluid_table_tennis/)
+[Click here to play now!](http://anirudhjoshi.github.io/fluid_table_tennis/)
 
 [Click here to watch the video!](http://www.youtube.com/watch?v=gcF-ZenWEM4&feature=plcp)
 
